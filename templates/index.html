@@ -591,6 +591,33 @@
             color: #991b1b;
             border: 1px solid #ef4444;
         }
+
+        .mbtn {
+            display: inline-block;
+            margin-right: 10px; /* space between buttons */
+            }
+
+            .button-container {
+                display: flex;
+                gap: 12px; /* equal spacing between buttons */
+                flex-wrap: wrap; /* allows wrapping if needed */
+                justify-content: center; /* keeps them centered */
+            }
+
+            @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column; /* stack vertically */
+                align-items: center; /* center align vertically stacked buttons */
+                gap: 10px; /* smaller gap for mobile */
+            }
+
+            .mbtn {
+                margin-right: 0; /* no side margin when stacked */
+                width: 80%; /* optional – make buttons wider on mobile */
+                text-align: center;
+            }
+            }
+        
     </style>
 </head>
 <body>
@@ -618,7 +645,14 @@
     <section id="hero">
         <h1>Hi, I'm <span style="color: red;">Sayan Dey</span></h1>
         <p class="subtitle">Full Stack Developer & Machine Learning Enthusiast</p>
-        <a href="#contact" class="cta-btn">Get In Touch</a>
+        <!-- <a  href="#contact" class="cta-btn mbtn">Get In Touch</a>
+        <a href=""  class="cta-btn mbtn">Get Resume</a> -->
+
+        <div class="button-container">
+            <a href="#contact" class="cta-btn mbtn">Get In Touch</a>
+            <a href="" class="cta-btn mbtn">Get Resume</a>
+        </div>
+
     </section>
 
     <section id="about">
