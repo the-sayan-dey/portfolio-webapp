@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Sayan Dey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --accent: #2563eb;
+            --gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        } */
+
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);  /* Changed from white to black */
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid #333;  /* Changed border color */
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* .logo {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        */
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #ffffff;  /* Changed from var(--text) to white */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #d1d5db;  /* Changed from var(--gray) to light gray */
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);  /* Keep the blue hover color */
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #ffffff;  /* Changed from var(--text) to white */
+            transition: 0.3s;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        } 
+
+        /* .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text);
+            transition: 0.3s;
+        } */
+
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 500;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--light-gray);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .experience-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .experience-description {
+            color: var(--gray);
+            margin-top: 0.75rem;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .education-description {
+            margin-top: 1rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .education-degree {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-year {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .certificate-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .certificate-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .certificate-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-issuer {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-date {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--light-gray);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent), #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .project-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .blog-date {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .blog-card p {
+            color: var(--gray);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        input, textarea {
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                /* position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                padding: 2rem;
+                transition: left 0.3s;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); */
+
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.98);  /* Changed to black */
+                width: 100%;
+                padding: 2rem;
+                transition: left 0.3s;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 5rem 1.5rem 3rem;
+            }
+        }
+
+        .message-alert {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .message-alert.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .message-alert.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <h1>Hi, I'm <span style="color: red;">Sayan Dey</span></h1>
+        <p class="subtitle">Full Stack Developer & Machine Learning Enthusiast</p>
+        <a href="#contact" class="cta-btn">Get In Touch</a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm Sayan Dey — a passionate and dedicated developer with a strong interest in building scalable, efficient, and impactful web applications. I enjoy working across both frontend and backend development, using technologies such as Django, PHP, and React to craft modern, responsive, and high-performing solutions.</p>
+                <p>Over the years, I’ve developed a keen understanding of full-stack development and how different layers of technology come together to create seamless user experiences. Beyond web development, I’m also deeply fascinated by Machine Learning, Deep Learning, and Generative AI, and I constantly explore how these cutting-edge technologies can enhance the way we build and interact with software.</p>
+                <p>I love solving complex problems, learning new tools and frameworks, and turning ideas into real-world applications that make a meaningful difference.</p>
+            </div>
+            <div class="skills">
+                
+                <span class="skill-tag">C</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Django</span>
+                <span class="skill-tag">React</span> 
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Numpy</span>
+                <span class="skill-tag">Pandas</span>
+                <span class="skill-tag">Scikit-Learn</span>
+                <span class="skill-tag">Pytorch</span>
+                <span class="skill-tag">Tensor Flow</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience-timeline">
+            {% if experiences %}
+                {% for exp in experiences %}
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">{{ exp.title }}</div>
+                            <div class="experience-company">{{ exp.company }}</div>
+                        </div>
+                        <div class="experience-date">
+                            {{ exp.start_date|date:"M Y" }} - 
+                            {% if exp.is_current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="experience-description">{{ exp.description }}</div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Senior Full Stack Developer</div>
+                            <div class="experience-company">Tech Company Inc.</div>
+                        </div>
+                        <div class="experience-date">Jan 2023 - Present</div>
+                    </div>
+                    <div class="experience-description">
+                        Led development of multiple high-impact web applications using Django and React. Mentored junior developers and improved team productivity by 40% through code reviews and best practices implementation.
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+<section id="education">
+    <h2>Education</h2>
+    <div class="education-grid">
+        {% if educations %}
+            {% for edu in educations %}
+            <div class="education-card">
+                <div class="education-icon">{{ edu.icon }}</div>
+                <div class="education-degree">{{ edu.degree }}</div>
+                <div class="education-school">{{ edu.institution }}</div>
+                <div class="education-year">{{ edu.year }}</div>
+                {% if edu.description %}
+                <div class="education-description">{{ edu.description }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <!-- fallback content -->
+        {% endif %}
+    </div>
+</section>
+
+    <section id="certificates">
+        <h2>Certificates</h2>
+        <div class="certificates-grid">
+            {% if certificates %}
+                {% for cert in certificates %}
+                <div class="certificate-card" {% if cert.credential_url %}onclick="window.open('{{ cert.credential_url }}', '_blank')"{% endif %}>
+                    <div class="certificate-badge">{{ cert.icon }}</div>
+                    <div class="certificate-name">{{ cert.name }}</div>
+                    <div class="certificate-issuer">{{ cert.issuer }}</div>
+                    <div class="certificate-date">Issued: {{ cert.issue_date|date:"M Y" }}</div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="certificate-card">
+                    <div class="certificate-badge">🏆</div>
+                    <div class="certificate-name">AWS Certified Solutions Architect</div>
+                    <div class="certificate-issuer">Amazon Web Services</div>
+                    <div class="certificate-date">Issued: Sep 2024</div>
+                </div>
+                <div class="certificate-card">
+                    <div class="certificate-badge">✨</div>
+                    <div class="certificate-name">Professional Scrum Master I</div>
+                    <div class="certificate-issuer">Scrum.org</div>
+                    <div class="certificate-date">Issued: Jul 2024</div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">🚀</div>
+                <div class="project-content">
+                    <h3>Project One</h3>
+                    <p>A full-stack web application built with Django and React.</p>
+                    <div class="project-links">
+                        <a href="#">View Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">💻</div>
+                <div class="project-content">
+                    <h3>Project Two</h3>
+                    <p>An e-commerce platform with payment integration.</p>
+                    <div class="project-links">
+                        <a href="#">View Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">🎨</div>
+                <div class="project-content">
+                    <h3>Project Three</h3>
+                    <p>A creative portfolio showcasing design work.</p>
+                    <div class="project-links">
+                        <a href="#">View Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <h2>Blog</h2>
+        <div class="blog-grid">
+            {% if recent_posts %}
+                {% for post in recent_posts %}
+                <div class="blog-card" onclick="window.location.href='/blog/{{ post.slug }}/'">
+                    <div class="blog-date">{{ post.created_at|date:"M d, Y" }}</div>
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.excerpt }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="blog-card">
+                    <div class="blog-date">Oct 1, 2025</div>
+                    <h3>Getting Started with Django</h3>
+                    <p>Learn how to build your first Django application from scratch...</p>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-date">Sep 28, 2025</div>
+                    <h3>CSS Grid Layout</h3>
+                    <p>Master modern CSS layouts with Grid and Flexbox...</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <form class="contact-form" id="contactForm">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section> -->
+
+    <section id="contact">
+    <h2>Get In Touch</h2>
+    <div class="contact-content">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message-alert {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+        {{ message }}
+    </div>
+        {% endfor %}
+    {% endif %}
+        
+        <form class="contact-form" method="POST" action="/#contact">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+</section>
+
+    <footer>
+        <p>&copy; 2025 Sayan Dey. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // document.getElementById('contactForm').addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     alert('Message sent! (This is a demo - integrate with Django backend)');
+        // });
+    </script>
+</body>
+</html>
