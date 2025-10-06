@@ -17,3 +17,12 @@ class CertificateAdmin(admin.ModelAdmin):
     list_display = ('name', 'issuer', 'issue_date')
     list_filter = ('issuer',)
     ordering = ['-issue_date']
+
+
+from .models import Experience, Education, Certificate, Project
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'order', 'created_at')
+    list_editable = ('order',)
+    ordering = ('order', '-created_at')

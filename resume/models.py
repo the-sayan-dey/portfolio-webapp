@@ -40,3 +40,21 @@ class Certificate(models.Model):
     
     def __str__(self):
         return f"{self.name} - {self.issuer}"
+    
+
+
+class Project(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    technologies = models.CharField(max_length=300, help_text="Comma-separated technologies")
+    demo_url = models.URLField(blank=True, help_text="Live demo link")
+    github_url = models.URLField(blank=True, help_text="GitHub repository link")
+    icon = models.CharField(max_length=10, default='🚀')
+    created_at = models.DateField(auto_now_add=True)
+    order = models.IntegerField(default=0, help_text="Lower number = appears first")
+    
+    class Meta:
+        ordering = ['order', '-created_at']
+    
+    def __str__(self):
+        return self.title
